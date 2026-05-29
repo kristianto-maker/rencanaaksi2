@@ -1,0 +1,120 @@
+import React from 'react';
+import { 
+  Globe, Search, MapPin, Users, BookOpen, 
+  Award, ChevronRight, BarChart2, Mail, Lock 
+} from 'lucide-react';
+
+export default function RisetHubCanvas() {
+  return (
+    <div className="min-h-screen bg-slate-50 font-sans text-slate-900">
+      {/* HEADER: Sticky & Modern */}
+      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-slate-200 px-8 py-4 flex justify-between items-center shadow-sm">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 bg-blue-700 rounded-xl flex items-center justify-center">
+            <Globe className="text-white" size={24} />
+          </div>
+          <span className="font-extrabold text-2xl tracking-tight text-slate-800">
+            Riset<span className="text-blue-600">Hub</span>
+          </span>
+        </div>
+        <nav className="hidden md:flex gap-8 text-sm font-semibold text-slate-600">
+          <a href="#" className="hover:text-blue-700">Beranda</a>
+          <a href="#" className="hover:text-blue-700">Publikasi</a>
+          <a href="#" className="hover:text-blue-700">Peneliti</a>
+        </nav>
+        <button className="px-6 py-2.5 bg-blue-600 text-white rounded-full text-sm font-bold shadow-md hover:bg-blue-700 transition-all">
+          Login Peneliti
+        </button>
+      </header>
+
+      {/* HERO SECTION: Omnisearch */}
+      <main className="max-w-6xl mx-auto px-8 py-20">
+        <div className="text-center mb-20">
+          <h1 className="text-5xl md:text-6xl font-extrabold text-slate-900 mb-6 leading-tight">
+            Eksplorasi Jejak <br />
+            <span className="text-blue-600">Riset & Inovasi Global</span>
+          </h1>
+          <div className="max-w-3xl mx-auto flex gap-2 bg-white p-2 rounded-full shadow-2xl border border-slate-100 mt-10">
+            <input 
+              className="flex-1 px-8 py-4 rounded-full outline-none text-lg bg-transparent" 
+              placeholder="Cari peneliti, jurnal, DOI, atau bidang ilmu..." 
+            />
+            <button className="px-10 py-4 bg-slate-900 text-white rounded-full font-bold flex items-center gap-2 hover:bg-blue-700 transition-colors">
+              <Search size={20} /> Cari Riset
+            </button>
+          </div>
+        </div>
+
+        {/* PETA KOLABORASI: Fitur Kunci */}
+        <section className="mb-24">
+          <div className="flex items-center justify-between mb-8">
+            <h2 className="text-3xl font-bold flex items-center gap-3">
+              <MapPin className="text-blue-600" /> Jejak Kolaborasi Internasional
+            </h2>
+          </div>
+          <div className="h-96 w-full bg-slate-900 rounded-3xl relative overflow-hidden flex items-center justify-center border-4 border-slate-200 shadow-2xl">
+            {/* Visualisasi Peta Simulasi */}
+            <div className="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/dot-grid.png')]"></div>
+            <div className="text-white text-center space-y-4">
+              <Globe size={64} className="mx-auto text-blue-500 animate-pulse" />
+              <p className="font-bold tracking-widest uppercase opacity-70">Global Research Network</p>
+            </div>
+            <div className="absolute bottom-8 left-8 p-6 bg-white/10 backdrop-blur-xl rounded-2xl border border-white/20 text-white shadow-xl">
+              <p className="text-sm font-medium">Mitra Institusi</p>
+              <p className="text-4xl font-extrabold text-blue-300">142+</p>
+            </div>
+          </div>
+        </section>
+
+        {/* DIREKTORI PENELITI: Tabel Interaktif */}
+        <section>
+          <div className="flex items-center justify-between mb-8">
+            <h2 className="text-3xl font-bold flex items-center gap-3">
+              <Users className="text-blue-600" /> Direktori Peneliti Terunggul
+            </h2>
+            <button className="text-blue-600 font-bold flex items-center gap-1 hover:underline">
+              Lihat Semua <ChevronRight size={18} />
+            </button>
+          </div>
+          
+          <div className="bg-white rounded-3xl shadow-xl border border-slate-100 overflow-hidden">
+            <table className="w-full text-left">
+              <thead className="bg-slate-50 border-b border-slate-100 text-slate-500 text-xs uppercase font-bold">
+                <tr>
+                  <th className="p-6">Nama Peneliti</th>
+                  <th className="p-6">NIDN</th>
+                  <th className="p-6">Asal</th>
+                  <th className="p-6">Kolaborasi Luaran</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-100">
+                {[
+                  { name: "Prof. Dr. Budi Santoso", nidn: "198012345", asal: "Teknik Informatika", kolab: 85 },
+                  { name: "Dr. Siti Aminah, M.Si", nidn: "198567890", asal: "Bioteknologi", kolab: 72 },
+                  { name: "Ir. Joko Widodo, PhD", nidn: "197544332", asal: "Teknik Sipil", kolab: 60 },
+                ].map((r, i) => (
+                  <tr key={i} className="hover:bg-blue-50/50 transition-colors">
+                    <td className="p-6 font-bold text-slate-800">{r.name}</td>
+                    <td className="p-6 text-slate-500">{r.nidn}</td>
+                    <td className="p-6">{r.asal}</td>
+                    <td className="p-6">
+                      <div className="w-48 h-2.5 bg-slate-100 rounded-full overflow-hidden">
+                        <div className="h-full bg-blue-600 rounded-full" style={{ width: `${r.kolab}%` }}></div>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+
+      {/* FOOTER */}
+      <footer className="bg-slate-900 text-slate-400 py-16 px-8 text-center border-t border-slate-800">
+        <p className="font-bold text-white mb-2 text-xl">RisetHub</p>
+        <p className="text-sm">© 2026 Universitas Riset & Inovasi. Seluruh hak cipta dilindungi.</p>
+      </footer>
+    </div>
+  );
+}
